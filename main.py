@@ -1,5 +1,5 @@
-from p_privacy_extension.privacyExtension import privacyExtension
-from p_privacy_extension.PMA import PMA
+from p_privacy_metadata.privacyExtension import privacyExtension
+from p_privacy_metadata.PMA import PMA
 from pm4py.objects.log.importer.xes import factory as xes_importer_factory
 from pm4py.objects.log.exporter.xes import factory as xes_exporter
 import pandas as pd
