@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: p-privacy-metadata
+Version: 0.0.1
+Summary: Privacy metadata in process mining
+Home-page: https://github.com/m4jidRafiei/privacy_metadata
+Author: Majid Rafiei
+Author-email: majid.rafiei@pads.rwth-aachen.de
+License: UNKNOWN
+Project-URL: Source, https://github.com/m4jidRafiei/privacy_metadata
+Description: Project that implements privacy metadata in process mining.
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
