@@ -9,7 +9,7 @@ log = xes_importer_factory.apply(event_log)
 
 # privacyExtension Part----------------------------------------------------------------
 prefix = 'privacy:'
-uri = 'http://www.xes-standard.org/privacy.xesext'
+uri = 'paper_version_uri/privacy.xesext'
 privacy = privacyExtension(log, prefix, uri)
 privacy.set_privacy_tracking(operation='suppression', level='event', target='org:resource')
 
