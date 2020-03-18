@@ -4,14 +4,14 @@ from pm4py.objects.log.importer.xes import factory as xes_importer_factory
 from pm4py.objects.log.exporter.xes import factory as xes_exporter
 import pandas as pd
 
-event_log = "Paper sample.xes"
+event_log = "ext_paper_sample.xes"
 log = xes_importer_factory.apply(event_log)
 
 # privacyExtension Part----------------------------------------------------------------
 prefix = 'privacy:'
 uri = 'paper_version_uri/privacy.xesext'
 privacy = privacyExtension(log, prefix, uri)
-privacy.set_privacy_tracking(operation='suppression', level='event', target='org:resource')
+privacy.set_anonymizer(operation='suppression', level='event', target='org:resource')
 
 statistics={}
 statistics['no_modified_traces'] = 15
@@ -19,10 +19,10 @@ statistics['no_modified_events'] = 20
 desired_analyses= {}
 desired_analyses['1']='process discovery'
 desired_analyses['2']='social network discovery'
-message = privacy.set_optional_tracking(layer = 1, statistics=statistics, desired_analyses=desired_analyses, test='test' )
+message = privacy.set_optional_anonymizer(layer = 1, statistics=statistics, desired_analyses=desired_analyses, test='test' )
 print(message)
 
-layer = privacy.get_layer(layer=1)
+layer = privacy.get_anonymizer(layer=2)
 anon = privacy.get_anonymizations()
 
 xes_exporter.export_log(log, 'ext_paper_sample.xes')

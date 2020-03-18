@@ -6,42 +6,42 @@ class privacyExtension():
         self.uri = uri
 
 
-    def set_privacy_tracking(self, operation, level, target):
+    def set_anonymizer(self, operation, level, target):
 
         layer = self.get_last_layer()
 
         if(layer is None):
             layer = 1
             self.log.extensions['Privacy'] = {'prefix': self.prefix[:-1], 'uri': self.uri}
-            privacyTracking = {}
+            privacyanonymizer = {}
         else:
             layer += 1
-            privacyTracking = self.log.attributes[self.prefix+'anonymizations']
+            privacyanonymizer = self.log.attributes[self.prefix+'anonymizations']
 
-        tracking = {}
-        tracking[self.prefix + 'layer'] = layer
-        tracking[self.prefix + 'operation'] = operation    #'substitution'
-        tracking[self.prefix + 'level'] = level   #'event'
-        tracking[self.prefix + 'target'] = target      #'concept:name'
+        anonymizer = {}
+        # anonymizer[self.prefix + 'layer'] = layer
+        anonymizer[self.prefix + 'operation'] = operation    #'substitution'
+        anonymizer[self.prefix + 'level'] = level   #'event'
+        anonymizer[self.prefix + 'target'] = target      #'concept:name'
 
         if(layer == 1):
-            privacyTracking[self.prefix+'tracking'+str(layer)] = {"value": None, "children": tracking}
-            self.log.attributes[self.prefix+'anonymizations'] = {"value": None, "children": privacyTracking}
+            privacyanonymizer[self.prefix+'anonymizer'+str(layer)] = {"value": None, "children": anonymizer}
+            self.log.attributes[self.prefix+'anonymizations'] = {"value": None, "children": privacyanonymizer}
         else:
-            privacyTracking['children'][self.prefix+'tracking'+str(layer)]= {"value": None, "children": tracking}
+            privacyanonymizer['children'][self.prefix+'anonymizer'+str(layer)]= {"value": None, "children": anonymizer}
 
 
-    def set_optional_tracking(self, layer, **keyparam):
+    def set_optional_anonymizer(self, layer, **keyparam):
         if (keyparam != {}):
             current_layer = self.get_last_layer()
             if(current_layer == None or current_layer < layer):
                 return "The layer does not exist!"
-            privacyTracking = self.log.attributes[self.prefix + 'anonymizations']
+            privacyanonymizer = self.log.attributes[self.prefix + 'anonymizations']
             for key,value in keyparam.items():
                 if type(value) is dict:
-                    privacyTracking['children'][self.prefix+'tracking' + str(layer)]['children'][key] = {"value": None, "children": value}
+                    privacyanonymizer['children'][self.prefix+'anonymizer' + str(layer)]['children'][key] = {"value": None, "children": value}
                 else:
-                    privacyTracking['children'][self.prefix + 'tracking' + str(layer)]['children'][key] = value
+                    privacyanonymizer['children'][self.prefix + 'anonymizer' + str(layer)]['children'][key] = value
             return "The parameters have been added."
         else:
             return "No parameter has been passed!"
@@ -53,9 +53,8 @@ class privacyExtension():
         except Exception as e:
             return None
 
-    def get_layer(self,layer):
-        return self.log.attributes[self.prefix + 'anonymizations']['children'][self.prefix+'tracking' + str(layer)]['children']
+    def get_anonymizer(self,layer):
+        return self.log.attributes[self.prefix + 'anonymizations']['children'][self.prefix+'anonymizer' + str(layer)]['children']
 
     def get_anonymizations(self):
         return self.log.attributes[self.prefix + 'anonymizations']['children']
-
