@@ -1,7 +1,7 @@
 from p_privacy_metadata import PMA, privacyExtension
 
 __name__ = 'p_privacy_metadata'
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 __doc__ = "Privacy metadata in process mining"
 __author__ = 'Majid Rafiei'
 __author_email__ = 'majid.rafiei@pads.rwth-aachen.de'
