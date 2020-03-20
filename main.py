@@ -4,7 +4,7 @@ from pm4py.objects.log.importer.xes import factory as xes_importer_factory
 from pm4py.objects.log.exporter.xes import factory as xes_exporter
 import pandas as pd
 
-event_log = "ext_paper_sample.xes"
+event_log = "paper_sample.xes"
 log = xes_importer_factory.apply(event_log)
 
 # privacyExtension Part----------------------------------------------------------------
@@ -22,7 +22,7 @@ desired_analyses['2']='social network discovery'
 message = privacy.set_optional_anonymizer(layer = 1, statistics=statistics, desired_analyses=desired_analyses, test='test' )
 print(message)
 
-layer = privacy.get_anonymizer(layer=2)
+layer = privacy.get_anonymizer(layer=1)
 anon = privacy.get_anonymizations()
 
 xes_exporter.export_log(log, 'ext_paper_sample.xes')

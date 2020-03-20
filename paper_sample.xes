@@ -53,7 +53,7 @@
         <event>
             <string key="concept:name" value="f"/>
             <date key="time:timestamp" value="2019-01-02T08:00:45.000+01:00"/>
-			<string key="org:resource" value="N2"/>
+			<string key="org:resource" value="N1"/>
 		</event>
         <event>
             <string key="concept:name" value="b"/>
@@ -63,7 +63,7 @@
          <event>
             <string key="concept:name" value="e"/>
             <date key="time:timestamp" value="2019-01-02T14:00:00.000+01:00"/>
-			<string key="org:resource" value="E3"/>
+			<string key="org:resource" value="E2"/>
 		</event>
 	</trace>
 	<trace>
@@ -88,12 +88,12 @@
         <event>
             <string key="concept:name" value="b"/>
             <date key="time:timestamp" value="2019-01-02T10:15:30.000+01:00"/>
-			<string key="org:resource" value="D3"/>
+			<string key="org:resource" value="D1"/>
 		</event>
         <event>
             <string key="concept:name" value="e"/>
             <date key="time:timestamp" value="2019-01-02T14:15:00.000+01:00"/>
-			<string key="org:resource" value="E5"/>
+			<string key="org:resource" value="E2"/>
 		</event>
 	</trace>
 	<trace>
@@ -111,9 +111,9 @@
 			<string key="org:resource" value="D2"/>
 		</event>
 		<event>
-            <string key="concept:name" value="c"/>
+            <string key="concept:name" value="r"/>
             <date key="time:timestamp" value="2019-01-01T09:30:00.000+01:00"/>
-			<string key="org:resource" value="N2"/>
+			<string key="org:resource" value="B1"/>
 		</event>
         <event>
             <string key="concept:name" value="e"/>

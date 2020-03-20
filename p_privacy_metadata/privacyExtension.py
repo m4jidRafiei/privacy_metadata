@@ -20,7 +20,7 @@ class privacyExtension():
 
         anonymizer = {}
         # anonymizer[self.prefix + 'layer'] = layer
-        anonymizer[self.prefix + 'operation'] = operation    #'substitution'
+        anonymizer[self.prefix + 'operation type'] = operation    #'substitution'
         anonymizer[self.prefix + 'level'] = level   #'event'
         anonymizer[self.prefix + 'target'] = target      #'concept:name'
 
