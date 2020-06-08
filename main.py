@@ -1,5 +1,5 @@
 from p_privacy_metadata.privacyExtension import privacyExtension
-from p_privacy_metadata.PMA import PMA
+from p_privacy_metadata.ELA import ELA
 from pm4py.objects.log.importer.xes import factory as xes_importer_factory
 from pm4py.objects.log.exporter.xes import factory as xes_exporter
 import pandas as pd
@@ -27,21 +27,21 @@ anon = privacy.get_anonymizations()
 
 xes_exporter.export_log(log, 'ext_paper_sample.xes')
 
-# PMA Part----------------------------------------------------------------------------
+# ELA Part----------------------------------------------------------------------------
 try:
     log_name = log.attributes['concept:name']
 except Exception as e:
     log_name = "No mame is given for the event log!"
 
-pma = PMA()
-pma_desired_analyses = ['analysis 1', 'analysis 2']
+ela = ELA()
+ela_desired_analyses = ['analysis 1', 'analysis 2']
 data = {'Name': ['Tom', 'nick', 'krish', 'jack'], 'Age': [20, 21, 19, 18]}
 df = pd.DataFrame(data)
-pma.set_values(origin=log_name, method='method 1', desired_analyses=pma_desired_analyses,data=df.copy())
-pma.create_xml('pma_paper_sample.xml')
-print(pma.get_values()['data'])
-pma = pma.read_xml("pma_paper_sample.xml")
-print(pma)
+ela.set_values(origin=log_name, method='method 1', desired_analyses=ela_desired_analyses,data=df.copy())
+ela.create_xml('ela_paper_sample.xml')
+print(ela.get_values()['data'])
+ela = ela.read_xml("ela_paper_sample.xml")
+print(ela)
 
 
 

@@ -1,5 +1,5 @@
 
-class PMA():
+class ELA():
     '''
        Process Mining Abstraction Object
     '''
@@ -45,7 +45,7 @@ class PMA():
         analyses_xml = self.func_xml_dict(desired_analyses_dict, "desired_analyses")
 
         xml = ['<?xml version="1.0" encoding="UTF-8" ?>']
-        xml.append('<PMA>')
+        xml.append('<ELA>')
         xml.append('    <header>')
         xml.append(f'       <origin>{self.origin}</origin>')
         xml.append(f'       <method>{self.method}</method>')
@@ -56,7 +56,7 @@ class PMA():
         for index, item in self.data.iterrows():
             xml.append(self.func_xml(item, str(index)))
         xml.append('    </data>')
-        xml.append('</PMA>')
+        xml.append('</ELA>')
         xml_content = '\n'.join(xml)
 
         f = open(filename, "w")
@@ -64,7 +64,7 @@ class PMA():
         f.close()
 
     def read_xml(self, filename):
-        pma ={}
+        ela ={}
         data = []
         import xml.etree.ElementTree as ET
         root = ET.parse(filename).getroot()
@@ -74,7 +74,7 @@ class PMA():
                     analyses = {}
                     for analysis in subchild:
                         analyses[analysis.attrib['name']] = analysis.text
-                    pma[subchild.tag] = analyses
+                    ela[subchild.tag] = analyses
                 elif (subchild.tag == 'item'):
                     item_dict ={}
                     items = {}
@@ -84,20 +84,20 @@ class PMA():
                     # data.append(items)
                     data.append(item_dict)
                 else:
-                    pma[subchild.tag] = subchild.text
-        pma['data'] = data
-        return pma
+                    ela[subchild.tag] = subchild.text
+        ela['data'] = data
+        return ela
 
 #Usage--------------------
 
 # import pandas as pd
-# pmo = PMA()
+# pmo = ELA()
 # data = {'Name': ['Tom', 'nick', 'krish', 'jack'], 'Age': [20, 21, 19, 18]}
 # df = pd.DataFrame(data)
 # pmo.set_values(origin = 'Majid', method = 'test_method', desired_analyses = ['discovery', 'social'].copy(), data = df.copy())
 # pmo.create_xml("test.xml")
 # print(pmo.get_values()['data'])
 #
-# pma = pmo.read_xml("test.xml")
-# print(pma)
+# ela = pmo.read_xml("test.xml")
+# print(ela)
 # print("done!")
