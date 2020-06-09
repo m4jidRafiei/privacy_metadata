@@ -1,5 +1,5 @@
 ## Introduction
-This project implements the privacy metadata proposed in the paper [Privacy-Preserving Data Publishing in Process Mining](https://).
+This project implements the privacy metadata proposed in the paper [Privacy-Preserving Data Publishing in Process Mining](https://www.researchgate.net/publication/342048551_Privacy-Preserving_Data_Publishing_in_Process_Mining).
 ## Python package
 The implementation has been published as a standard Python package. Use the following command to install the corresponding Python package:
 
